@@ -38,3 +38,9 @@ if !limiter.Allow() {
 start := time.Now()
 err := doWork()
 limiter.Record(time.Since(start), err)
+
+
+## Disclaimer
+
+This project is developed and maintained in a personal capacity and
+is not affiliated with or endorsed by any employer.
