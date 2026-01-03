@@ -1,5 +1,11 @@
 # Adaptive Rate Limit
 
+![CI](https://github.com/bhatpriyanka8/adaptiveratelimit/actions/workflows/ci.yml/badge.svg)
+[![Go Report Card](https://goreportcard.com/badge/github.com/bhatpriyanka8/adaptiveratelimit)](https://goreportcard.com/report/github.com/bhatpriyanka8/adaptiveratelimit)
+[![Go Reference](https://pkg.go.dev/badge/github.com/bhatpriyanka8/adaptiveratelimit.svg)](https://pkg.go.dev/github.com/bhatpriyanka8/adaptiveratelimit)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Go](https://img.shields.io/badge/go-1.24+-blue)
+
 An adaptive rate limiter for Go that dynamically adjusts throughput
 based on observed latency and error rates.
 
@@ -73,6 +79,7 @@ limiter.Record(time.Since(start), err)
 ## Examples
 
 For Runnable examples, refer
+
 [HTTP Example](https://github.com/bhatpriyanka8/adaptiveratelimit/tree/main/examples/http)
 
 [gRPC Example](https://github.com/bhatpriyanka8/adaptiveratelimit/tree/main/examples/grpc)
@@ -83,7 +90,6 @@ cd examples/http
 go run main.go
 ```
 
-go run main.go
 ## Disclaimer
 
 This project is developed and maintained in a personal capacity and
