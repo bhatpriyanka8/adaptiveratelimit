@@ -1,6 +1,7 @@
 package adaptiveratelimit
 
 import (
+	"errors"
 	"testing"
 	"time"
 )
@@ -59,5 +60,22 @@ func TestLimiterDecreasesLimitOnHighLatency(t *testing.T) {
 
 	if limiter.CurrentLimit() >= 10 {
 		t.Fatal("expected limit to decrease due to high latency")
+	}
+}
+
+func TestLimiterMetrics(t *testing.T) {
+	cfg := AdaptiveConfig{ /* minimal valid config */ }
+	l := NewAdaptivePerSecond(10, cfg)
+	defer l.Stop()
+
+	l.Record(100*time.Millisecond, nil)
+	l.Record(200*time.Millisecond, errors.New("err"))
+
+	if l.ErrorRate() <= 0 {
+		t.Fatal("expected non-zero error rate")
+	}
+
+	if l.AverageLatency() <= 0 {
+		t.Fatal("expected positive latency")
 	}
 }

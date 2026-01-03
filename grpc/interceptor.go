@@ -9,7 +9,11 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// UnaryServerInterceptor applies adaptive rate limiting to all unary RPCs
+// UnaryServerInterceptor returns a gRPC unary interceptor that
+// applies adaptive rate limiting to incoming RPCs.
+//
+// RPCs that exceed the current limit are rejected with a
+// ResourceExhausted error.
 func UnaryServerInterceptor(l *adaptiveratelimit.Limiter) grpc.UnaryServerInterceptor {
 	return func(
 		ctx context.Context,
