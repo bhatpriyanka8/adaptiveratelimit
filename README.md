@@ -17,6 +17,12 @@ downstream health. This can cause cascading failures or underutilization.
 This library adapts limits in real time using control-loop principles
 similar to TCP congestion control.
 
+## Design
+
+For details on design philosophy and trade-offs, refer:
+[DESIGN.md](./DESIGN.md)
+
+
 ## Features
 
 - Adaptive request-per-second limits
