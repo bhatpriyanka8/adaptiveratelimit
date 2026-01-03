@@ -6,6 +6,8 @@
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Go](https://img.shields.io/badge/go-1.24+-blue)
 
+**API Reference:** https://pkg.go.dev/github.com/bhatpriyanka8/adaptiveratelimit
+
 An adaptive rate limiter for Go that dynamically adjusts throughput
 based on observed latency and error rates.
 
