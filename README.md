@@ -1,6 +1,6 @@
 # Adaptive Rate Limit
 
-![CI](https://github.com/bhatpriyanka8/adaptiveratelimit/actions/workflows/ci.yml/badge.svg)
+[![CI](https://github.com/bhatpriyanka8/adaptiveratelimit/actions/workflows/ci.yaml/badge.svg)](https://github.com/bhatpriyanka8/adaptiveratelimit/actions/workflows/ci.yaml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/bhatpriyanka8/adaptiveratelimit)](https://goreportcard.com/report/github.com/bhatpriyanka8/adaptiveratelimit)
 [![Go Reference](https://pkg.go.dev/badge/github.com/bhatpriyanka8/adaptiveratelimit.svg)](https://pkg.go.dev/github.com/bhatpriyanka8/adaptiveratelimit)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
