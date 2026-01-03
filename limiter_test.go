@@ -61,7 +61,3 @@ func TestLimiterDecreasesLimitOnHighLatency(t *testing.T) {
 		t.Fatal("expected limit to decrease due to high latency")
 	}
 }
-
-type errDummy struct{}
-
-func (e errDummy) Error() string { return "error" }
