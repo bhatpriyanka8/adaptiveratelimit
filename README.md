@@ -71,12 +71,19 @@ err := doWork()
 limiter.Record(time.Since(start), err)
 ```
 ## Examples
-- **HTTP server example**  
-  [HTTP Example](https://github.com/bhatpriyanka8/adaptiveratelimit/tree/main/examples/http)
 
-- **gRPC server example**  
-  [gRPC Example](https://github.com/bhatpriyanka8/adaptiveratelimit/tree/main/examples/grpc)
+For Runnable examples, refer
+[HTTP Example](https://github.com/bhatpriyanka8/adaptiveratelimit/tree/main/examples/http)
 
+[gRPC Example](https://github.com/bhatpriyanka8/adaptiveratelimit/tree/main/examples/grpc)
+
+Go to any of these folders and just run main.go 
+```
+cd examples/http
+go run main.go
+```
+
+go run main.go
 ## Disclaimer
 
 This project is developed and maintained in a personal capacity and
