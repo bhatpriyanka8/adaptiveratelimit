@@ -26,19 +26,42 @@ similar to TCP congestion control.
 - A background control loop evaluates health
 - Limits are increased or decreased gradually
 
-## Example
+## Installation
+```go
+go get github.com/bhatpriyanka8/adaptiveratelimit
+```
+
+## Quick Start
 
 ```go
+import (
+    "time"
+
+    "github.com/bhatpriyanka8/adaptiveratelimit"
+)
+
+cfg := adaptiveratelimit.AdaptiveConfig{
+    TargetLatency: 200 * time.Millisecond,
+    MaxErrorRate:  0.05,
+    IncreaseStep:  1,
+    DecreaseStep:  2,
+    MinLimit:      1,
+    MaxLimit:      100,
+    Cooldown:      2 * time.Second,
+}
+
 limiter := adaptiveratelimit.NewAdaptivePerSecond(10, cfg)
+defer limiter.Stop()
 
 if !limiter.Allow() {
-    return errors.New("rate limited")
+    // reject request (e.g. HTTP 429)
+    return
 }
 
 start := time.Now()
 err := doWork()
 limiter.Record(time.Since(start), err)
-
+```
 
 ## Disclaimer
 
