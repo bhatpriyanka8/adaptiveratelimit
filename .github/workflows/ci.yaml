@@ -5,11 +5,66 @@ on:
   pull_request:
 
 jobs:
-  test:
+  build:
+    name: Test, Lint, Coverage
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        go-version: ['1.24']
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ matrix.go-version }}
+
+      - name: Verify formatting
+        run: |
+          if [ -n "$(gofmt -l .)" ]; then
+            echo "gofmt failed"
+            gofmt -l .
+            exit 1
+          fi
+
+      - name: Run golangci-lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: latest
+
+      - name: Run tests
+        run: go test ./...
+
+      - name: Run tests with race detector
+        run: go test -race ./...
+
+      - name: Generate coverage
+        run: go test ./... -coverprofile=coverage.out
+
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage.out
+
+  benchmarks:
+    name: Benchmarks (informational)
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'push'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
         with:
           go-version: '1.24'
-      - run: go test ./...
+
+      - name: Run benchmarks
+        run: |
+          go test -bench=. -run=^$ ./...

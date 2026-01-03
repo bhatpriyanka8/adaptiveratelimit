@@ -80,15 +80,19 @@ limiter.Record(time.Since(start), err)
 
 For Runnable examples, refer
 
-[HTTP Example](https://github.com/bhatpriyanka8/adaptiveratelimit/tree/main/examples/http)
+- [HTTP Example](https://github.com/bhatpriyanka8/adaptiveratelimit/tree/main/examples/http)
 
-[gRPC Example](https://github.com/bhatpriyanka8/adaptiveratelimit/tree/main/examples/grpc)
+- [gRPC Example](https://github.com/bhatpriyanka8/adaptiveratelimit/tree/main/examples/grpc)
 
 Go to any of these folders and just run main.go 
 ```
 cd examples/http
 go run main.go
 ```
+## Performance
+
+Basic benchmarks are included for the hot paths (`Allow` and `Record`)
+to help reason about overhead and contention.
 
 ## Disclaimer
 
