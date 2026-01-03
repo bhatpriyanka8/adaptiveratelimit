@@ -47,11 +47,6 @@ The limiter increases capacity gradually when healthy and backs off faster under
 ## Quick Start
 
 ```go
-import (
-    "time"
-
-    "github.com/bhatpriyanka8/adaptiveratelimit"
-)
 
 cfg := adaptiveratelimit.AdaptiveConfig{
     TargetLatency: 200 * time.Millisecond,
@@ -75,6 +70,12 @@ start := time.Now()
 err := doWork()
 limiter.Record(time.Since(start), err)
 ```
+## Examples
+- **HTTP server example**  
+  [HTTP Example](https://github.com/bhatpriyanka8/adaptiveratelimit/tree/main/examples/http)
+
+- **gRPC server example**  
+  [gRPC Example](https://github.com/bhatpriyanka8/adaptiveratelimit/tree/main/examples/grpc)
 
 ## Disclaimer
 
