@@ -7,7 +7,6 @@
 //
 // This package is intended for single-process use and does not coordinate
 // limits across multiple instances or nodes.
-
 package adaptiveratelimit
 
 import (
